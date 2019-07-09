@@ -6,7 +6,7 @@ cam = cv.VideoCapture(0)
 ret, prev = cam.read()
 prevgray = cv.cvtColor(prev, cv.COLOR_BGR2GRAY)
 
-
+# As you decrease the step size the number of green points on screen increases
 def draw_flow(img, flow, step=16):
     h, w = img.shape[:2]
     y, x = np.mgrid[step/2:h:step, step/2:w:step].reshape(2,-1).astype(int)
@@ -14,6 +14,7 @@ def draw_flow(img, flow, step=16):
     lines = np.vstack([x, y, x+fx, y+fy]).T.reshape(-1, 2, 2)
     lines = np.int32(lines + 0.5)
     vis = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
+    print(lines.shape)
     # blue lines join green to red points
     # cv.polylines(vis, lines, 0, (255, 0, 0))
     # for (x1, y1), (_x2, _y2) in lines:
