@@ -28,11 +28,11 @@ labels_rearranged = labels.reshape((image.shape[0] , image.shape[1]))
 print("Labels Rearranged shape" , labels_rearranged.shape)
 
 masked_image = image.copy()
-# for cluster value == can be changed to 0,1,2
+# for cluster value 3 labels_rearranged== can be changed to 0,1,2
 masked_image[labels_rearranged==2] = [0,0,0]
 
 cv2.imshow("image" , image)
-# Segmented image will show us the color available
+# Segmented image will show us the colors available
 cv2.imshow("segmented_image" , segmented_image)
 # Masked image will remove one of those colors
 cv2.imshow("masked image" , masked_image)
